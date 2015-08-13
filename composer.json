@@ -1,0 +1,26 @@
+{
+  "name": "author/Clebrsonn",
+  "authors": [
+    {
+      "name": "Cleberson",
+      "email": "clebrsonn@gmail.com",
+      "homepage": "http://www.hyteck.com.br",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.5",
+    "doctrine/orm": "2.4.*",
+    "symfony/yaml": "2.*",
+    "slim/slim": "2.6.2",
+    "slim/extras": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "SampleApp\\": "app/lib/"
+    }
+  },
+  "archive": {
+    "exclude": ["vendor", "*.log"]
+  }
+}
