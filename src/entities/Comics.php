@@ -6,12 +6,13 @@
  * Date: 31/07/2015
  * Time: 21:15
  */
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
+
+require_once "Common/AttCommon.php";
 
 /**
  * @Entity

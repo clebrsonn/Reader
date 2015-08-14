@@ -11,13 +11,11 @@
   "require": {
     "php": ">=5.5",
     "doctrine/orm": "2.4.*",
-    "symfony/yaml": "2.*",
-    "slim/slim": "2.6.2",
-    "slim/extras": "*"
+    "symfony/yaml": "2.*"
   },
   "autoload": {
     "psr-4": {
-      "SampleApp\\": "app/lib/"
+      "Reader\\": "src"
     }
   },
   "archive": {
