@@ -5,8 +5,7 @@
  * Date: 05/08/2015
  * Time: 12:06
  */
-
-
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
@@ -27,10 +26,27 @@ class User
     protected $id;
 
     /**
+     * @Column(type="string", length=50)
+     *
+     */
+    protected $name;
+
+
+    /**
      * @Column(type="string", length=255)
      *
      */
     protected $email;
+
+    /**
+     * @Column(type="boolean")
+     */
+    protected $confirmedEmail;
+
+    /**
+     * @Column(type="datetime")
+     */
+    protected $joinDate;
 
     /**
      * @Column(type="string", length=255)
@@ -63,4 +79,54 @@ class User
     {
         $this->plainPassword = $password;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConfirmedEmail()
+    {
+        return $this->confirmedEmail;
+    }
+
+    /**
+     * @param mixed $confirmedEmail
+     */
+    public function setConfirmedEmail($confirmedEmail)
+    {
+        $this->confirmedEmail = $confirmedEmail;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getJoinDate()
+    {
+        return $this->joinDate;
+    }
+
+    /**
+     * @param mixed $joinDate
+     */
+    public function setJoinDate($joinDate)
+    {
+        $this->joinDate = $joinDate;
+    }
+
+
 }
