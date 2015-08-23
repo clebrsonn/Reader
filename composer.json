@@ -14,11 +14,17 @@
     "symfony/yaml": "2.*"
   },
   "autoload": {
-    "psr-4": {
-      "Reader\\": "src"
+    "psr-0": {
+      "Reader\\": "/"
     }
   },
+  "config": {
+    "vendor-dir": "lib/vendor"
+  },
   "archive": {
-    "exclude": ["vendor", "*.log"]
+    "exclude": [
+      "vendor",
+      "*.log"
+    ]
   }
 }

@@ -1,6 +1,6 @@
 <?php
 
-include_once "User";
+//include_once "User";
 
 /**
  * Created by PhpStorm.
