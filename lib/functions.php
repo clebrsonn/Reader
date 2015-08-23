@@ -10,6 +10,7 @@ class functions
 {
 
     private static $definitions = array();
+    public static $config = array();
     private static $language = "";
 
 
@@ -103,24 +104,43 @@ class functions
         file_put_contents($file, $contents);
     }
 
-    public static function loadLanguage($language = "")
+//    public static function loadLanguage($language = "")
+//    {
+//        // Clear the currently loaded definitions.
+//        self::$definitions = array();
+//
+//        // If the specified language doesn't exist, use the default language.
+//        self::$language = file_exists(LANG_PATH . "/" . sanitizeFileName($language) . "/definitions.php") ? $language : C("app.language");
+//
+//        // Load the main definitions file.
+//        $languagePath = LANG_PATH . "/" . sanitizeFileName(self::$language);
+//        self::loadDefinitions("$languagePath/definitions.php");
+//
+//        // Loop through the loaded plugins and include their definition files, if they exist.
+//        foreach (C("app.enabledPlugins") as $plugin) {
+//            if (file_exists($file = "$languagePath/definitions." . sanitizeFileName($plugin) . ".php"))
+//                self::loadDefinitions($file);
+//        }
+//
+//    }
+
+
+    public function C($key, $default = null)
     {
-        // Clear the currently loaded definitions.
-        self::$definitions = array();
+        return self::config($key, $default);
+    }
 
-        // If the specified language doesn't exist, use the default language.
-        self::$language = file_exists(LANG_PATH . "/" . sanitizeFileName($language) . "/definitions.php") ? $language : C("app.language");
+    // CONFIGURATION
 
-        // Load the main definitions file.
-        $languagePath = LANG_PATH . "/" . sanitizeFileName(self::$language);
-        self::loadDefinitions("$languagePath/definitions.php");
+    public static function loadConfig($file)
+    {
+        include $file;
+        self::$config = array_merge(self::$config, $config);
+    }
 
-        // Loop through the loaded plugins and include their definition files, if they exist.
-        foreach (C("app.enabledPlugins") as $plugin) {
-            if (file_exists($file = "$languagePath/definitions." . sanitizeFileName($plugin) . ".php"))
-                self::loadDefinitions($file);
-        }
-
+    protected static function config($key, $default = null)
+    {
+        return isset(self::$config[$key]) ? self::$config[$key] : $default;
     }
 
 

@@ -1,9 +1,9 @@
 <?php
 // bootstrap.php
-use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Tools\Setup;
 
-require_once dirname(__FILE__) . "/vendor/autoload.php";
+require_once dirname(__FILE__) . "/lib/vendor/autoload.php";
 
 // Create a simple "default" Doctrine ORM configuration for Annotations
 $isDevMode = true;
@@ -13,14 +13,8 @@ $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/src/entit
 //$config = Setup::createYAMLMetadataConfiguration(array(__DIR__."/config/yaml"), $isDevMode);
 
 // database configuration parameters
-$conn = array(
-    'driver'   => 'pdo_mysql',
-    'user'     => 'root',
-    'password' => '',
-    'dbname'   => 'reader',
-    'host'     => 'localhost',
-    'port'     => '3306'
-);
+include_once dirname(__FILE__) . "/lib/config/conn.php";
+
 
 // obtaining the entity manager
 $entityManager = EntityManager::create($conn, $config);
