@@ -1,6 +1,5 @@
 <?php
-
-
+require_once __DIR__ .'/lib/config/Route.php';
 //writeConfig(array('db_host' => $_POST['data']['DB_HOST'],
 //        'db_user' => $_POST['data']['DB_USER'],
 //        'db_password' => $_POST['data']['DB_PASSWORD'],
@@ -9,6 +8,16 @@
 //    )
 //);
 //WASD::loadConfig(ROOT_DIR . "/config.php");
+$pathInPieces = explode(DIRECTORY_SEPARATOR , __FILE__);
+
+var_dump( __FILE__);
+
+if (file_exists(Route::CONFIG)) {
+    require_once Route::CONFIG;
+} else {
+    die("Config.php is not found");
+}
+
 
 if ('app.installed' == '1') {
     $messageType = 'info';
