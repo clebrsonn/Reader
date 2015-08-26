@@ -11,19 +11,45 @@
 class UserController
 {
 
+    private $userController;
 
-    public function login($User)
+    public function __construct()
     {
-        return;
+        $this->userController = new UserController();
+    }
+
+    public function newUser($name, $eMail, $pass)
+    {
+        if (!empty($name) || !empty($eMail)) {
+            $user = new User();
+            $user->setName($name);
+            $user->setEmail($eMail);
+            $user->setPlainPassword($pass);
+
+            $userExiste = ($this->userController->searchUser($eMail));
+            if ($userExiste) {
+                return -2;
+            }
+
+            $result = $this->userController->insertUser($user);
+
+            return $result;
+        } else {
+            return false;
+        }
     }
 
     public function searchUser($options)
     {
-        return;
+        return $this->userController->searchUser($options);
     }
 
-    public function insertUser($user)
+    public function login($mail, $pass)
     {
-        return;
+        $User = new User();
+        $User->setEmail($mail);
+        $User->setPlainPassword($pass);
+        return $this->userController->login($User);
     }
+
 }

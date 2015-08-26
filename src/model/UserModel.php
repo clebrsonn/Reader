@@ -8,45 +8,20 @@
  */
 class UserModel
 {
-    private $userController;
 
-    public function __construct()
+
+    public function login($User)
     {
-        $this->userController = new UserController();
-    }
-
-    public function newUser($name, $eMail, $pass)
-    {
-        if (!empty($name) || !empty($eMail)) {
-            $user = new User();
-            $user->setName($name);
-            $user->setEmail($eMail);
-            $user->setPlainPassword($pass);
-
-            $userExiste = ($this->userController->searchUser($eMail));
-            if ($userExiste) {
-                return -2;
-            }
-
-            $result = $this->userController->insertUser($user);
-
-            return $result;
-        } else {
-            return false;
-        }
+        return;
     }
 
     public function searchUser($options)
     {
-        return $this->userController->searchUser($options);
+        return;
     }
 
-    public function login($mail, $pass)
+    public function insertUser($user)
     {
-        $User = new User();
-        $User->setEmail($mail);
-        $User->setPlainPassword($pass);
-        return $this->userController->login($User);
+        return;
     }
-
 }
