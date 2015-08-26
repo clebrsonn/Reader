@@ -1,43 +1,53 @@
 <?php
-require_once __DIR__ .'/lib/config/Route.php';
-//writeConfig(array('db_host' => $_POST['data']['DB_HOST'],
-//        'db_user' => $_POST['data']['DB_USER'],
-//        'db_password' => $_POST['data']['DB_PASSWORD'],
-//        'db_name' => $_POST['data']['DB_NAME'],
-//        'db_prefix' => $_POST['data']['TABLES_PREFIX'],
-//    )
-//);
-//WASD::loadConfig(ROOT_DIR . "/config.php");
-$pathInPieces = explode(DIRECTORY_SEPARATOR , __FILE__);
+$con = __DIR__ . "/lib/config/conn.php";
+require_once __DIR__ . '/lib/functions.php';
 
-var_dump( __FILE__);
-
-if (file_exists(Route::CONFIG)) {
-    require_once Route::CONFIG;
+if (file_exists($con)) {
+    require_once $con;
 } else {
     die("Config.php is not found");
 }
 
-
-if ('app.installed' == '1') {
+if ($config['app.installed'] == '1') {
     $messageType = 'info';
     $message = 'Please delete "install.php" file in your root directory before launching your site';
 }
 
+$app['name'] = $config['app.title'];
 
-$app['name'] = "Manga Reader";
+createDB();
+
+
+//if (isset($_POST['install']) && $_POST['install'] == '1') {
+//    writeConfig(array(
+//            'host' => $_POST['data']['DB_HOST'],
+//            'user' => $_POST['data']['DB_USER'],
+//            'password' => $_POST['data']['DB_PASSWORD'],
+//            'dbname' => $_POST['data']['DB_NAME'],
+//            'dbprefix' => $_POST['data']['TABLES_PREFIX'],
+//            'driver' => 'pdo_mysql',
+//        )
+//    );
+//    createDB();
+//
+//    //  WASD::loadConfig(ROOT_DIR . "/config.php");
+//    // WASD::setDB();
+//}
 ?>
 
 
+<!DOCTYPE html>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
     <title> Install <?php echo $app['name'] ?></title>
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="//netdna.bootstrapcdn.com/bootswatch/3.0.3/yeti/bootstrap.min.css"> -->
     <link rel="stylesheet" type="text/css" media="screen"
           href="lib/vendor/twitter/bootstrap/dist/css/bootstrap.min.css">
     <!-- <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script> -->
-    <script src="lib/jquery-2.1.1.min.js"></script>
-    <script src="lib/vendor/twitter/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="lib/vendor/twitter/bootstrap/dist/js/bootstrap.min.js"></script>
 
 
 </head>
