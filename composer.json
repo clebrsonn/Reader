@@ -15,8 +15,9 @@
     "twitter/bootstrap": "v3.3.5"
   },
   "autoload": {
-    "psr-0": {
-      "Reader\\": "/"
+    "psr-4": {
+      "Reader\\Src": "src/",
+      "Reader\\Config": "lib/"
     }
   },
   "config": {
