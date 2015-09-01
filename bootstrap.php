@@ -17,3 +17,5 @@ $entities = Setup::createAnnotationMetadataConfiguration(array(__DIR__ . "/src/e
 
 // obtaining the entity manager
 $entityManager = EntityManager::create(conn::$connection, $entities);
+
+return $entityManager;
